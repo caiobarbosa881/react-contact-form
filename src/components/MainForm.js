@@ -30,7 +30,7 @@ function MainForm() {
           )}
         </div>
         <div>
-          <label className='labels' >Email</label>
+          <label className='labels' >E-mail</label>
           <Field className='input' name="email" type="email"/>
           {errors.email && (
             <span>{errors.email}</span>

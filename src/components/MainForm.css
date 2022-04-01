@@ -1,14 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Anybody:wght@100&display=swap');
+
 .form-container{
     position: relative;
     margin: auto;
     background-color: rgb(255, 255, 255);
-    height: 650px;
-    width: 600px;
+    height: 595px;
+    width: 550px;
     font-weight: bold;
     margin-top: 120px;
     text-align: left;
-    padding: 10px;
+    padding: 5px;
     padding-left: 50px;
+}
+h1{
+    font-weight: bolder;
+    color: rgb(40, 40, 112)
 }
 label{
     display: block;
