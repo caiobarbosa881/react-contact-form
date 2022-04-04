@@ -8,21 +8,22 @@
     width: 550px;
     font-weight: bold;
     margin-top: 120px;
-    text-align: left;
     padding: 5px;
     padding-left: 50px;
 }
 h1{
     font-weight: bolder;
-    color: rgb(40, 40, 112)
+    color: rgb(40, 40, 112);
+    text-align: center;
 }
 label{
     display: block;
     margin-bottom: 7px;
 }
 button{
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
-    display: inline-block;
     outline: none;
     cursor: pointer;
     font-size: 14px;
@@ -43,13 +44,6 @@ button{
     height: 48px;
     justify-content: center;
     width: 200px;
-}
-.vertical-center{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 button:hover{
     transform: scale(1.04);
@@ -77,4 +71,19 @@ button:hover{
     margin-top: -5px;
     color: red;
     transition: all 5s ease-out;
+}
+.radio{
+    text-align: center;
+    border-radius: 15px;
+    background-color: #9af0b8;
+    margin-right: 30px;
+    float: left;
+    width: 150px;
+}
+textarea{
+    margin: 50px;
+    width: 420px;
+    height: 150px;
+    font-size: 20px;
+    resize: none;
 }

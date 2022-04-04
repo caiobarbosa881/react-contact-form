@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { useFormik, Field, FormikProvider } from 'formik';
 import './MainForm.css';
 import NumberFormat from 'react-number-format';
 import * as Yup from 'yup';
@@ -10,14 +10,13 @@ function MainForm() {
 
   const phoneMask = /^(\([0-9]{2}\))\s([0-9]{1})?([0-9]{4})-([0-9]{4})$/;
 
-  const cpfMask = /^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/;
-
-
   const formik = useFormik({
     initialValues: {
       nome: '',
       email: '',
       celular: '',
+      genero: '',
+      mensagem: '',
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
@@ -32,13 +31,15 @@ function MainForm() {
       .required('E-mail Obrigatório'),
       celular: Yup.string()
       .matches(phoneMask, 'Celular não é valido')
-      .required('Celular é obrigatório'),    
+      .required('Celular é obrigatório'), 
+      mensagem: Yup.string('')
+      .max(200, 'Limite de 200 caracteres'),
     }),
   });
   return (
     <form className='form-container' onSubmit={formik.handleSubmit}>
       <h1>Contate-nos</h1>
-      <label htmlFor="nome">Nome</label>
+      <label>Nome</label>
       <input
         className='input'
         id="nome"
@@ -48,9 +49,9 @@ function MainForm() {
         onBlur={formik.handleBlur}
         value={formik.values.nome}
       />
-       {formik.errors.nome ? <div>{formik.errors.nome}</div> : null}
+       {formik.errors.nome ? <div className='error'>{formik.errors.nome}</div> : null}
 
-      <label htmlFor="email">E-mail</label>
+      <label>E-mail</label>
       <input
         className='input'
         id="email"
@@ -60,9 +61,9 @@ function MainForm() {
         onBlur={formik.handleBlur}
         value={formik.values.email}
       />
-      {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+      {formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
 
-      <label htmlFor="celular">Celular</label>
+      <label>Celular</label>
       <NumberFormat
         format={'(##) #####-####'}
         className='input'
@@ -73,9 +74,31 @@ function MainForm() {
         onBlur={formik.handleBlur}
         value={formik.values.celular}
       />
-      {formik.errors.celular ? <div>{formik.errors.celular}</div> : null}
+      {formik.errors.celular ? <div className='error'>{formik.errors.celular}</div> : null}
 
-      <button type="submit">Enviar</button>
+    <div className='radio' >
+      <input className='radio-input' type="radio" id="genero" name="genero" value={formik.values.genero}/>
+      <label>Masculino</label>
+    </div>
+
+    <div className='radio' >
+      <input className='radio-input' type="radio" id="genero" name="genero" value={formik.values.genero}/>
+      <label>Feminino</label>
+    </div>
+
+    <div className='radio'>
+      <input className='radio-input' type="radio" id="genero" name="genero" value={formik.values.genero}/>
+      <label>Outro</label>
+    </div>
+      
+        <textarea name='mensagem'  type="text" id="mensagem"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.mensagem} cols={40} rows={15}/>
+        {formik.errors.mensagem ? <div className='error'>{formik.errors.mensagem}</div> : null}
+
+        <button className='vertical-center' type="submit">Enviar</button>
+
     </form>
   )
 }
