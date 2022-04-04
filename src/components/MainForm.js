@@ -1,72 +1,90 @@
 import React from 'react';
-import { Formik, Field, Form } from 'formik';
-import { useState } from 'react';
-import schema from '../schema';
+import { useFormik } from 'formik';
 import './MainForm.css';
+import NumberFormat from 'react-number-format';
+
 
 function MainForm() {
 
-    function onSubmit(values) {
-        console.log('submit', values);
- }
+  const validate = values => {
+    const errors = {};
+    if (!values.nome) {
+      errors.nome = 'Required';
+    } else if (values.nome.length > 2) {
+      errors.nome = 'Nome muito curto';
+    }
+  
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.celular)) {
+      errors.email = 'Invalid email address';
+    }
 
-  return (
-    <div className="form-container">
-    <Formik
-    validationSchema={schema}
-    onSubmit={onSubmit}
-    validationOnMount
-    initialValues={{
-      name: '',
+    if (!values.celular) {
+      errors.celular = 'Required';
+    } else if (values.celular.length > 5) {
+      errors.celular = 'Email muito curto';
+    }
+  
+    return errors;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      nome: '',
       email: '',
       celular: '',
-      cpf: '',
-      cidade: '',
-    }}
-    render={({ errors }) => (
-    <Form>
-        <h1>Contate-nos</h1>
-        <div>
-          <label>Nome</label>
-          <Field className='input' name="name" type="text"/>
-          {errors.name && (
-            <p className='error'>{errors.name}</p>
-          )}
-        </div>
-        <div>
-          <label>E-mail</label>
-          <Field className='input' name="email" type="email"/>
-          {errors.email && (
-            <p className='error'>{errors.email}</p>
-          )}
-        </div>
-        <div>
-          <label>Celular</label>
-          <Field className='input' name="celular" type="text"/>
-          {errors.celular && (
-            <p className='error'>{errors.celular}</p>
-          )}
-        </div>
-        <div>
-          <label>CPF</label>
-          <Field className='input' name="cpf" type="text"/>
-          {errors.cpf && (
-           <p className='error'>{errors.cpf}</p>
-          )}
-        </div>
-        <div>
-          <label>Cidade</label>
-          <Field className='input' name="cidade" type="text"/>
-          {errors.cidade && (
-           <p className='error'>{errors.cidade}</p>
-          )}
-        </div>
-        <button type='submit'>Enviar</button>
-        </Form>
-        )}
+    },
+    validate,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+    },
+  });
+  return (
+    <form className='form-container' onSubmit={formik.handleSubmit}>
+      <h1>Contate-nos</h1>
+      <label htmlFor="nome">Nome</label>
+      <input
+        className='input'
+        id="nome"
+        name="nome"
+        type="text"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.nome}
       />
-  </div>
-  )
-}
+       {formik.errors.nome ? <div>{formik.errors.nome}</div> : null}
 
-export default MainForm
+      <label htmlFor="email">E-mail</label>
+      <input
+        className='input'
+        id="email"
+        name="email"
+        type="email"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.email}
+      />
+      {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+
+      
+      <label htmlFor="celular">Celular</label>
+      <NumberFormat
+        format="(##) #####-####"
+        className='input'
+        id="celular"
+        name="celular"
+        type="text"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.celular}
+      />
+      {formik.errors.email ? <div>{formik.errors.celular}</div> : null}
+
+      <button type="submit">Enviar</button>
+    </form>
+  );
+};
+
+export default MainForm;
