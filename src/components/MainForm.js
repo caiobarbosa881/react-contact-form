@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik, Field, FormikProvider } from 'formik';
+import { useFormik } from 'formik';
 import './MainForm.css';
 import NumberFormat from 'react-number-format';
 import * as Yup from 'yup';
@@ -38,9 +38,8 @@ function MainForm() {
   });
   return (
     <form className='form-container' onSubmit={formik.handleSubmit}>
-      <h1>Contate-nos</h1>
-      <label>Nome</label>
       <input
+        placeholder='Seu Nome'
         className='input'
         id="nome"
         name="nome"
@@ -51,8 +50,8 @@ function MainForm() {
       />
        {formik.errors.nome ? <div className='error'>{formik.errors.nome}</div> : null}
 
-      <label>E-mail</label>
       <input
+        placeholder='Email'
         className='input'
         id="email"
         name="email"
@@ -63,8 +62,8 @@ function MainForm() {
       />
       {formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
 
-      <label>Celular</label>
       <NumberFormat
+        placeholder='Celular'
         format={'(##) #####-####'}
         className='input'
         id="celular"
@@ -97,8 +96,7 @@ function MainForm() {
         value={formik.values.mensagem} cols={40} rows={15}/>
         {formik.errors.mensagem ? <div className='error'>{formik.errors.mensagem}</div> : null}
 
-        <button className='vertical-center' type="submit">Enviar</button>
-
+        <button type="submit">Enviar</button>
     </form>
   )
 }

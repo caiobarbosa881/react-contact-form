@@ -2,12 +2,13 @@
 
 .form-container{
     position: relative;
-    margin: auto;
-    background-color: #ffffff;
-    height: 795px;
+    margin-left: 920px;
+    position: absolute;
+    top: 110px;
+    background-color: white;
+    height: 620px;
     width: 550px;
     font-weight: bold;
-    margin-top: 120px;
     padding: 5px;
     padding-left: 50px;
 }
@@ -22,7 +23,6 @@ label{
 }
 button{
     margin-left: auto;
-    margin-right: auto;
     margin-top: 10px;
     outline: none;
     cursor: pointer;
@@ -40,20 +40,28 @@ button{
     text-align: center;
     padding: 17px 48px;
     color: #fff;
-    background-color: #1ED760;
+    background-color: #000000;
     height: 48px;
     justify-content: center;
-    width: 200px;
+    width: 150px;
+}
+.vertical-center{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 button:hover{
     transform: scale(1.04);
-    background-color: #21e065;
+    background-color: #1b1b1b;
 }
 .input{
-    margin-bottom: 10px;
-    height: 20px;
+
+    margin-top: 15px;
+    height: 30px;
     width: 90%;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(243, 243, 243);
     border-color: white;
     font-family: 'Roboto', sans-serif;
   color: #333;
@@ -64,26 +72,37 @@ button:hover{
   display: block;
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;
-}
+  outline: none;
+}   
 .input::after{
 }
 .error{
-    margin-top: -5px;
+    margin-top: 15px;
     color: red;
     transition: all 5s ease-out;
 }
 .radio{
+    margin-top: 30px;
+    margin-bottom: 30px;
     text-align: center;
     border-radius: 15px;
-    background-color: #9af0b8;
+    background-color: rgb(243, 243, 243);
     margin-right: 30px;
     float: left;
     width: 150px;
 }
+label{
+    color: rgb(122, 122, 122);
+}
 textarea{
-    margin: 50px;
-    width: 420px;
-    height: 150px;
+    width: 520px;
+    height: 220px;
     font-size: 20px;
     resize: none;
+    background-color: rgb(243, 243, 243);
+    border: none;
+}
+textarea{
+border: none;
+outline: none;
 }
