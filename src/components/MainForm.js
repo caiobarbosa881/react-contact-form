@@ -2,32 +2,16 @@ import React from 'react';
 import { useFormik } from 'formik';
 import './MainForm.css';
 import NumberFormat from 'react-number-format';
+import * as Yup from 'yup';
+
 
 
 function MainForm() {
 
-  const validate = values => {
-    const errors = {};
-    if (!values.nome) {
-      errors.nome = 'Required';
-    } else if (values.nome.length > 2) {
-      errors.nome = 'Nome muito curto';
-    }
-  
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.celular)) {
-      errors.email = 'Invalid email address';
-    }
+  const phoneMask = /^(\([0-9]{2}\))\s([0-9]{1})?([0-9]{4})-([0-9]{4})$/;
 
-    if (!values.celular) {
-      errors.celular = 'Required';
-    } else if (values.celular.length > 5) {
-      errors.celular = 'Email muito curto';
-    }
-  
-    return errors;
-  };
+  const cpfMask = /^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/;
+
 
   const formik = useFormik({
     initialValues: {
@@ -35,11 +19,21 @@ function MainForm() {
       email: '',
       celular: '',
     },
-    validate,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
-      console.log(values);
     },
+    validationSchema: Yup.object({
+
+      nome: Yup.string('Insira o Nome corretamente')
+      .min(2, 'Preencha mais de um caractere')
+      .required('Nome Obrigatório'),
+      email: Yup.string()
+      .email('Insira o E-mail corretamente')
+      .required('E-mail Obrigatório'),
+      celular: Yup.string()
+      .matches(phoneMask, 'Celular não é valido')
+      .required('Celular é obrigatório'),    
+    }),
   });
   return (
     <form className='form-container' onSubmit={formik.handleSubmit}>
@@ -68,23 +62,22 @@ function MainForm() {
       />
       {formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
-      
       <label htmlFor="celular">Celular</label>
       <NumberFormat
-        format="(##) #####-####"
+        format={'(##) #####-####'}
         className='input'
         id="celular"
         name="celular"
-        type="text"
+        type='text'
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.celular}
       />
-      {formik.errors.email ? <div>{formik.errors.celular}</div> : null}
+      {formik.errors.celular ? <div>{formik.errors.celular}</div> : null}
 
       <button type="submit">Enviar</button>
     </form>
-  );
-};
+  )
+}
 
 export default MainForm;
