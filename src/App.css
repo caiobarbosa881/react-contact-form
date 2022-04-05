@@ -1,7 +1,43 @@
 .box-image{
-   position: absolute;
-   top: 230px;
-   left: 240px;
-    width: 600px;
-    height: 600px;
+    position: absolute;
+    top: 295px;
+    left: -900px;
+    transition: all 2s ease;
+    height: 500px;
+    width: 500px;
+}
+.active{
+   animation: horizontal-move 3s ease;
+   animation-fill-mode:forwards
+}
+
+@keyframes horizontal-move   {
+   0% { left: -900 }
+    100% { left: 452px }
+}
+.main-text-box{
+    position: absolute;
+    top: 130px;
+    left: 480px;
+    height: 160px;
+    width: 410px;
+    text-align: left;
+    margin: unset;
+}
+.main-text-box h1{
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 35px;
+    display: inline-block;
+    margin:unset
+}
+h3{
+    margin-top: 30px;
+    font-size: 15px;
+    color: rgb(199, 199, 199);
+    float: left;
+}
+span{
+    display: inline-block;
 }

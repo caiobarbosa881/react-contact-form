@@ -4,8 +4,6 @@ import './MainForm.css';
 import NumberFormat from 'react-number-format';
 import * as Yup from 'yup';
 
-
-
 function MainForm() {
 
   const phoneMask = /^(\([0-9]{2}\))\s([0-9]{1})?([0-9]{4})-([0-9]{4})$/;
@@ -76,17 +74,23 @@ function MainForm() {
       {formik.errors.celular ? <div className='error'>{formik.errors.celular}</div> : null}
 
     <div className='radio' >
-      <input className='radio-input' type="radio" id="genero" name="genero" value={formik.values.genero}/>
+      <input className='radio-input' type="radio" id="genero" name="genero" 
+       onChange={formik.handleChange}
+      value='Masculino'/>
       <label>Masculino</label>
     </div>
 
     <div className='radio' >
-      <input className='radio-input' type="radio" id="genero" name="genero" value={formik.values.genero}/>
+      <input className='radio-input' type="radio" id="genero" name="genero" 
+       onChange={formik.handleChange}
+      value='Feminino'/>
       <label>Feminino</label>
     </div>
 
     <div className='radio'>
-      <input className='radio-input' type="radio" id="genero" name="genero" value={formik.values.genero}/>
+      <input className='radio-input' type="radio" id="genero" name="genero" 
+       onChange={formik.handleChange}
+      value='Outro'/>
       <label>Outro</label>
     </div>
       

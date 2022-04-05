@@ -5,7 +5,7 @@
     margin-left: 920px;
     position: absolute;
     top: 110px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     height: 620px;
     width: 550px;
     font-weight: bold;
@@ -60,7 +60,7 @@ button:hover{
 
     margin-top: 15px;
     height: 30px;
-    width: 90%;
+    width: 80%;
     background-color: rgb(243, 243, 243);
     border-color: white;
     font-family: 'Roboto', sans-serif;
@@ -87,7 +87,7 @@ button:hover{
     text-align: center;
     border-radius: 15px;
     background-color: rgb(243, 243, 243);
-    margin-right: 30px;
+    margin-right: 11px;
     float: left;
     width: 150px;
 }
@@ -95,8 +95,8 @@ label{
     color: rgb(122, 122, 122);
 }
 textarea{
-    width: 520px;
-    height: 220px;
+    width: 470px;
+    height: 170px;
     font-size: 20px;
     resize: none;
     background-color: rgb(243, 243, 243);
