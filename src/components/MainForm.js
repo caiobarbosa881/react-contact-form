@@ -18,6 +18,20 @@ function MainForm() {
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+      var inputNome= document.getElementById("nome");
+      var inputEmail= document.getElementById("email");
+      var inputCelular= document.getElementById("celular");
+      var inputGenero= document.getElementById("genero");
+      var inputMensagem= document.getElementById("mensagem");
+
+
+      localStorage.setItem("nome", inputNome.value);
+      localStorage.setItem("email", inputEmail.value);
+      localStorage.setItem("celular", inputCelular.value);
+      localStorage.setItem("genero", inputGenero.value);
+      localStorage.setItem("mensagem", inputMensagem.value);
+
+      
     },
     validationSchema: Yup.object({
 
