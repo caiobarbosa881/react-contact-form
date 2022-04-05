@@ -1,8 +1,8 @@
 .box-image{
     position: absolute;
-    top: 295px;
+    top: 285px;
     left: -900px;
-    transition: all 2s ease;
+    transition: all 0.5s ease;
     height: 500px;
     width: 500px;
 }
@@ -10,7 +10,6 @@
    animation: horizontal-move 3s ease;
    animation-fill-mode:forwards
 }
-
 @keyframes horizontal-move   {
    0% { left: -900 }
     100% { left: 452px }
@@ -30,14 +29,27 @@
     color: rgb(0, 0, 0);
     font-size: 35px;
     display: inline-block;
-    margin:unset
+    margin:unset;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2.0s;
 }
 h3{
     margin-top: 30px;
     font-size: 15px;
     color: rgb(199, 199, 199);
     float: left;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
 }
-span{
-    display: inline-block;
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { FormikProvider, useFormik } from 'formik';
 import './MainForm.css';
 import NumberFormat from 'react-number-format';
 import * as Yup from 'yup';
@@ -14,26 +14,22 @@ function MainForm() {
       nome: '',
       email: '',
       celular: '',
-      genero: '',
       mensagem: '',
-    },
+    }, 
     onSubmit: values => {
       swal("Parabéns!", "O formulário foi enviado com Sucesso!", "success");
       var inputNome= document.getElementById("nome");
       var inputEmail= document.getElementById("email");
       var inputCelular= document.getElementById("celular");
-      var inputGenero= document.getElementById("genero");
       var inputMensagem= document.getElementById("mensagem");
 
       localStorage.setItem("nome", inputNome.value);
       localStorage.setItem("email", inputEmail.value);
       localStorage.setItem("celular", inputCelular.value);
-      localStorage.setItem("genero", inputGenero.value);
       localStorage.setItem("mensagem", inputMensagem.value);
 
     },
     validationSchema: Yup.object({
-
       nome: Yup.string('Insira o Nome corretamente')
       .min(2, 'Preencha mais de um caractere')
       .required('Nome Obrigatório'),
@@ -42,7 +38,7 @@ function MainForm() {
       .required('E-mail Obrigatório'),
       celular: Yup.string()
       .matches(phoneMask, 'Celular não é valido')
-      .required('Celular é obrigatório'), 
+      .required('Celular é Obrigatório'), 
       mensagem: Yup.string('')
       .max(200, 'Limite de 200 caracteres'),
     }),
@@ -86,36 +82,19 @@ function MainForm() {
       />
       {formik.errors.celular ? <div className='error'>{formik.errors.celular}</div> : null}
 
-    <div className='radio' >
-      <input className='radio-input' type="radio" id="genero" name="genero" 
-       onChange={formik.handleChange}
-      value='Masculino'/>
-      <label>Masculino</label>
-    </div>
-
-    <div className='radio' >
-      <input className='radio-input' type="radio" id="genero" name="genero" 
-       onChange={formik.handleChange}
-      value='Feminino'/>
-      <label>Feminino</label>
-    </div>
-
-    <div className='radio'>
-      <input className='radio-input' type="radio" id="genero" name="genero" 
-       onChange={formik.handleChange}
-      value='Outro'/>
-      <label>Outro</label>
-    </div>
-      
-        <textarea name='mensagem'  type="text" id="mensagem"
+        <textarea 
+        name='mensagem'
+        type="text" 
+        id="mensagem"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.mensagem} cols={40} rows={15}/>
+        value={formik.values.mensagem} 
+        cols={40} 
+        rows={15}/>
         {formik.errors.mensagem ? <div className='error'>{formik.errors.mensagem}</div> : null}
 
         <button type="submit">Enviar</button>
     </form>
   )
 }
-
 export default MainForm;
