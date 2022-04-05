@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import './MainForm.css';
 import NumberFormat from 'react-number-format';
 import * as Yup from 'yup';
+import swal from 'sweetalert';
 
 function MainForm() {
 
@@ -17,13 +18,12 @@ function MainForm() {
       mensagem: '',
     },
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      swal("Parabéns!", "O formulário foi enviado com Sucesso!", "success");
       var inputNome= document.getElementById("nome");
       var inputEmail= document.getElementById("email");
       var inputCelular= document.getElementById("celular");
       var inputGenero= document.getElementById("genero");
       var inputMensagem= document.getElementById("mensagem");
-
 
       localStorage.setItem("nome", inputNome.value);
       localStorage.setItem("email", inputEmail.value);
@@ -31,7 +31,6 @@ function MainForm() {
       localStorage.setItem("genero", inputGenero.value);
       localStorage.setItem("mensagem", inputMensagem.value);
 
-      
     },
     validationSchema: Yup.object({
 
