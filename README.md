@@ -22,8 +22,11 @@
  <p>[X] Sucess Message</p>
  <p>[X] Accessibility</p>
 
-## Autor
+## Author
 -Caio Barbosa
 
 ## Dependencies
 ReactJs and NodeJs
+
+
+Thank you and have a nice day.
