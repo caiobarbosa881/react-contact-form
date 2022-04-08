@@ -2,7 +2,7 @@
 
 ## About the Project
 
-<p align="center">The objective is create a contact form with a lot of nice features and visual stuff</p>
+<p align="center">The objective is create a contact form with a lot of nice features and good visual stuff</p>
 
 ## Stacks/Technology
 
