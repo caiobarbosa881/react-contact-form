@@ -4,7 +4,6 @@
 
 <p align="center">The objective is create a contact form with a lot of nice features and visual stuff</p>
 
-
 ## Stacks/Technology
 
 <p>-React</p>
@@ -22,11 +21,9 @@
  <p>[X] Sucess Message</p>
  <p>[X] Accessibility</p>
 
-## Author
--Caio Barbosa
-
 ## Dependencies
 ReactJs and NodeJs
 
-
+## Author
+-Caio Barbosa
 Thank you and have a nice day.
