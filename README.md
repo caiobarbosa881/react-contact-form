@@ -26,4 +26,4 @@ ReactJs and NodeJs
 
 ## Author
 -Caio Barbosa
-Thank you and have a nice day.
+<p>Thank you and have a nice day.</p>
